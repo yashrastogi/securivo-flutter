@@ -4,16 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:securivo/screens/home/home.dart';
-// import 'package:securivo/auth.dart';
 
 class Login extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = new GoogleSignIn();
 
   Future<FirebaseUser> signIn() async {
-    // if ((await _auth.currentUser()) != null) {
-    //   return _auth.currentUser();
-    // }
     GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
     GoogleSignInAuthentication googleSignInAuthentication;
     FirebaseUser user;
@@ -58,9 +54,6 @@ class Login extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: CupertinoButton(
                       color: Colors.blue,
-                      // textColor: Colors.white,
-                      // shape: StadiumBorder(),
-                      // height: 55,
                       onPressed: () {
                         signIn().then((onValue) =>
                             Navigator.pushReplacementNamed(context, '/home'));
@@ -80,9 +73,6 @@ class Login extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: CupertinoButton(
                       color: Colors.blue,
-                      // textColor: Colors.white,
-                      // shape: StadiumBorder(),
-                      // height: 55,
                       onPressed: () {
                         signIn().then((onValue) =>
                             Navigator.pushReplacementNamed(context, '/home'));
@@ -90,13 +80,6 @@ class Login extends StatelessWidget {
                       child: Text('Login with Google'),
                     ),
                   )
-
-                  // MaterialButton(
-                  //   color: Colors.blue,
-                  //   textColor: Colors.white,
-                  //   onPressed: () => signOut(),
-                  //   child: Text('Logout'),
-                  // )
                 ],
               );
           }

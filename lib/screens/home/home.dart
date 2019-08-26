@@ -6,33 +6,13 @@ import '../upload/upload.dart';
 import '../profile/profile.dart';
 import '../login/login.dart';
 
-// class Home extends StatefulWidget {
-//   @override
-//   State<StatefulWidget> createState() {
-//     return new HomeState();
-//   }
-// }
-
 FirebaseUser user;
 
 class Home extends StatelessWidget {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
-  // void getUser() async {
-  //   user = (await auth.currentUser());
-  //   // print(user);
-  // }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   getUser();
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // getUser();
-
     return DefaultTabController(
         length: 3,
         child: Scaffold(
@@ -68,7 +48,6 @@ class Home extends StatelessWidget {
                       }
                       return Profile(snapshot.data);
                     default:
-                      print('Loading\n');
                       return Container();
                   }
                 },
@@ -85,7 +64,6 @@ class Home extends StatelessWidget {
                       }
                       return Upload(snapshot.data);
                     default:
-                      print('Loading');
                       return Container();
                   }
                 },
@@ -102,7 +80,6 @@ class Home extends StatelessWidget {
                       }
                       return Download(snapshot.data);
                     default:
-                      print('Loading');
                       return Container();
                   }
                 },
