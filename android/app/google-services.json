@@ -1,0 +1,101 @@
+{
+  "project_info": {
+    "project_number": "663782666767",
+    "firebase_url": "https://securivo-a17bd.firebaseio.com",
+    "project_id": "securivo-a17bd",
+    "storage_bucket": "securivo-a17bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663782666767:android:f5a103136ac6e8d0",
+        "android_client_info": {
+          "package_name": "com.securivo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "663782666767-lm3p401rpa5fit7mktar0n0ukmobrs89.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.securivo",
+            "certificate_hash": "92456843c6353490a4eea1a3265886f8a0738bf1"
+          }
+        },
+        {
+          "client_id": "663782666767-5m1sojcu1qj6ehnm9cd4765vhg5f68mu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.securivo",
+            "certificate_hash": "61dc53e567f47ebd0fcae061790df6588905cf4b"
+          }
+        },
+        {
+          "client_id": "663782666767-0dpgsg47dlcncaj8vn177i8ej5ha8ieb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.securivo",
+            "certificate_hash": "f7f3d19a0e7bd460530784e853450e0c2476ff35"
+          }
+        },
+        {
+          "client_id": "663782666767-1332c5gcgc6t7j8f6mkqm8pf046jhank.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsX41BCTMhlFWwrYqSxJSDiYCcvr2WJnc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "663782666767-1332c5gcgc6t7j8f6mkqm8pf046jhank.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663782666767:android:b9cf7e1ce62e761f",
+        "android_client_info": {
+          "package_name": "io.github.securivo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "663782666767-hifadkgq8lj7ht17snr8bd3hc1l416dn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.securivo",
+            "certificate_hash": "724e38122788125a0c8cc4b49ab70b98ba9b6c75"
+          }
+        },
+        {
+          "client_id": "663782666767-1332c5gcgc6t7j8f6mkqm8pf046jhank.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsX41BCTMhlFWwrYqSxJSDiYCcvr2WJnc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "663782666767-1332c5gcgc6t7j8f6mkqm8pf046jhank.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
