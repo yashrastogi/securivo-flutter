@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:securivo/screens/home/home.dart';
 class Login extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = new GoogleSignIn();
+  final Firestore _db = Firestore.instance;
 
   Future<FirebaseUser> signIn() async {
     GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
@@ -23,7 +25,20 @@ class Login extends StatelessWidget {
         accessToken: googleSignInAuthentication.accessToken);
 
     user = (await _auth.signInWithCredential(credential)).user;
+    updateUserData(user);
     return user;
+  }
+
+  void updateUserData(FirebaseUser user) async {
+    DocumentReference ref = _db.collection('users').document(user.uid);
+
+    return ref.setData({
+      'uid': user.uid,
+      'email': user.email,
+      'photoURL': user.photoUrl,
+      'displayName': user.displayName,
+      'lastSeen': DateTime.now()
+    }, merge: true);
   }
 
   void signOut() {
@@ -43,7 +58,6 @@ class Login extends StatelessWidget {
                 return null;
               }
               if (snapshot.data != null) {
-                print('\n\n\n$snapshot\n\n\n');
                 return Home();
               }
               return Column(
