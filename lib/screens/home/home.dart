@@ -13,77 +13,45 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 3,
-        child: Scaffold(
-            appBar: AppBar(
-              actions: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.exit_to_app),
-                  onPressed: () {
-                    Login().signOut();
-                    Navigator.pushReplacementNamed(context, '/');
-                  },
-                )
-              ],
-              bottom: TabBar(
-                tabs: <Widget>[
-                  Tab(icon: Icon(Icons.account_circle)),
-                  Tab(icon: Icon(Icons.add)),
-                  Tab(icon: Icon(Icons.cloud_download))
-                ],
-              ),
-              title: Text(appName),
-            ),
-            body: TabBarView(children: <Widget>[
-              FutureBuilder<FirebaseUser>(
-                future: auth.currentUser(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<FirebaseUser> snapshot) {
-                  switch (snapshot.connectionState) {
-                    case ConnectionState.done:
-                      if (snapshot.hasError) {
-                        print(snapshot.error);
-                        return null;
-                      }
-                      return Profile(snapshot.data);
-                    default:
-                      return Container();
-                  }
-                },
-              ),
-              FutureBuilder<FirebaseUser>(
-                future: auth.currentUser(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<FirebaseUser> snapshot) {
-                  switch (snapshot.connectionState) {
-                    case ConnectionState.done:
-                      if (snapshot.hasError) {
-                        print(snapshot.error);
-                        return null;
-                      }
-                      return Upload(snapshot.data);
-                    default:
-                      return Container();
-                  }
-                },
-              ),
-              FutureBuilder<FirebaseUser>(
-                future: auth.currentUser(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<FirebaseUser> snapshot) {
-                  switch (snapshot.connectionState) {
-                    case ConnectionState.done:
-                      if (snapshot.hasError) {
-                        print(snapshot.error);
-                        return null;
-                      }
-                      return Download(snapshot.data);
-                    default:
-                      return Container();
-                  }
-                },
-              ),
-            ])));
+    return FutureBuilder<FirebaseUser>(
+        future: auth.currentUser(),
+        builder: (BuildContext context, AsyncSnapshot<FirebaseUser> snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.done:
+              if (snapshot.hasError) {
+                print(snapshot.error);
+                return null;
+              }
+              return DefaultTabController(
+                  length: 3,
+                  child: Scaffold(
+                      appBar: AppBar(
+                        actions: <Widget>[
+                          IconButton(
+                            icon: Icon(Icons.exit_to_app),
+                            onPressed: () {
+                              Login().signOut();
+                              Navigator.pushReplacementNamed(context, '/');
+                            },
+                          )
+                        ],
+                        bottom: TabBar(
+                          tabs: <Widget>[
+                            Tab(icon: Icon(Icons.account_circle)),
+                            Tab(icon: Icon(Icons.add)),
+                            Tab(icon: Icon(Icons.cloud_download))
+                          ],
+                        ),
+                        title: Text(appName),
+                      ),
+                      body: TabBarView(children: <Widget>[
+                        Profile(user: snapshot.data),
+                        Upload(user: snapshot.data),
+                        Download(user: snapshot.data)
+                      ])));
+            default:
+              return Container();
+          }
+        });
   }
 }

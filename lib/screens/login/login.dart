@@ -12,7 +12,12 @@ class Login extends StatelessWidget {
   final Firestore _db = Firestore.instance;
 
   Future<FirebaseUser> signIn() async {
-    GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    GoogleSignInAccount googleSignInAccount;
+    try {
+      googleSignInAccount = await googleSignIn.signIn();
+    } catch(e) {
+      print(e);
+    }
     GoogleSignInAuthentication googleSignInAuthentication;
     FirebaseUser user;
     if (googleSignInAccount == null) {
@@ -69,8 +74,10 @@ class Login extends StatelessWidget {
                     child: CupertinoButton(
                       color: Colors.blue,
                       onPressed: () {
-                        signIn().then((onValue) =>
-                            Navigator.pushReplacementNamed(context, '/home'));
+                        signIn().then((onValue) => {
+                              if (onValue != null)
+                                Navigator.pushReplacementNamed(context, '/home')
+                            });
                       },
                       child: Text('Login with Google'),
                     ),
@@ -78,7 +85,6 @@ class Login extends StatelessWidget {
                 ],
               );
             default:
-              print('Loading\n');
               return Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.stretch,

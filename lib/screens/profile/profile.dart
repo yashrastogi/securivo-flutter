@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Profile extends StatelessWidget {
-  FirebaseUser user;
-  Profile(FirebaseUser user) {
-    this.user = user;
-  }
+  final FirebaseUser user;
+  Profile({Key key, @required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +55,7 @@ class Profile extends StatelessWidget {
                 Clipboard.setData(new ClipboardData(text: user.uid));
                 return Scaffold.of(context).showSnackBar(new SnackBar(
                   content: new Text("Copied User Identifier!"),
-                  duration: const Duration(seconds: 3),
+                  duration: const Duration(seconds: 2),
                 ));
               },
               child: Row(

@@ -14,7 +14,7 @@ description: A secure video sharing application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   flutter:
@@ -26,6 +26,7 @@ dependencies:
   firebase_auth: ^0.14.0+3
   google_sign_in: ^4.0.6
   firebase_core: ^0.4.0+9
+  firebase_storage:
   rxdart: ^0.22.1+1
   cloud_firestore: ^0.12.9+1
 
